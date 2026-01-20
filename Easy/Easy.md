@@ -19,3 +19,13 @@
 >      FROM amazon_shipment
 >      GROUP BY year_months;
 
+### Question 3 ID:9622
+> #### Number Of Bathrooms And Bedrooms
+> Find the average number of bathrooms and bedrooms for each city’s property types. Output the result along with the city name and the property type.
+>
+>     SELECT city,
+>            property_type,
+>            AVG(bathrooms) AS bathroom,
+>            AVG(bedrooms) AS bedroom
+>     FROM airbnb_search_details
+>     GROUP BY city, property_type;
