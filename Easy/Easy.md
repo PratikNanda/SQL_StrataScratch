@@ -22,3 +22,8 @@ GROUP BY client_id, m;
 FROM amazon_shipment
 GROUP BY year_months;
  `
+
+    dfsdf
+    dsf
+    d sfs
+    
