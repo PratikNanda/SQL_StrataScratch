@@ -206,7 +206,6 @@
 >     GROUP BY bike_number
 >     ORDER BY end_time DESC
 
-
 ### Question 18 ID:10299
 > #### Finding Updated Records
 > We have a table with employees and their salaries, however, some of the records are old and contain outdated salary information. Find the current salary of each employee assuming that salaries increase each year. Output their id, first name, last name, department ID, and current salary. Order your list by employee ID in ascending order.
@@ -226,4 +225,30 @@
 >        ) AS s
 >     WHERE s.rn = 1
 >     ORDER BY s.id ASC;
+
+### Question 19 ID:10308
+> #### Salaries Differences
+> Calculates the difference between the highest salaries in the marketing and engineering departments. Output just the absolute difference in salaries.
+>
+>     SELECT ABS(
+>         MAX(CASE WHEN d.department = 'marketing' THEN e.salary END) -
+>         MAX(CASE WHEN d.department = 'engineering' THEN e.salary END)
+>     ) AS salary_diff
+>     FROM db_employee e
+>     JOIN db_dept d
+>     ON e.department_id = d.id;
+ 
+### Question 20 ID:10353
+> #### Workers With The Highest Salaries
+> Management wants to analyze only employees with official job titles. Find the job titles of the employees with the highest salary. If multiple employees have the same highest salary, include all their job titles.
+>
+>     SELECT t.worker_title
+>     FROM worker w
+>     JOIN title t
+>     ON w.worker_id = t.worker_ref_id
+>     WHERE w.salary = (SELECT MAX(a.salary)
+>         FROM worker a
+>         JOIN title b ON a.worker_id = b.worker_ref_id
+>         WHERE b.worker_title IS NOT NULL
+>     )
 
